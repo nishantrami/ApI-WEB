@@ -41,16 +41,18 @@ function Faction({ addToCart }) {
         <>
             <header>
                 <h2>Faction</h2>
-                <div className="navbar-links">
+                <div className="category-links">
                     <ul>
                         <li>
                             <Link to="/MensFaction">
-                                Mens-Faction
+                                <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&q=80&w=120" alt="Mens Faction" />
+                                <span>Mens-Faction</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="/WommensFaction">
-                                Wommens-Faction
+                                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=120" alt="Wommens Faction" />
+                                <span>Wommens-Faction</span>
                             </Link>
                         </li>
                     </ul>
