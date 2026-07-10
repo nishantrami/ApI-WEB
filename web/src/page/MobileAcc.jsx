@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Mobile({ addToCart }) {
-    const [mobile, setMobile] = useState([]);
-    const [mobileacc, setMobileAcc] = useState([]);
+function MobileAcc({ addToCart }) {
+    const [accessories, setAccessories] = useState([]);
+
     useEffect(() => {
-        fetch('https://dummyjson.com/products/category/smartphones')
-            .then(res => res.json())
-            .then(data => setMobile(data.products));
-        fetch('https://dummyjson.com/products/category/mobile-accessories')
-            .then(res => res.json())
-            .then(data => setMobileAcc(data.products));
+        const fetchData = async () => {
+            const response = await fetch("https://dummyjson.com/products/category/mobile-accessories");
+            const data = await response.json();
+            setAccessories(data.products || []);
+        };
+        fetchData();
     }, []);
+
     return (
         <>
             <header>
@@ -34,20 +35,8 @@ function Mobile({ addToCart }) {
                 </div>
             </header>
             <main>
-                <div className="phone">
-                    {mobile.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
-                </div>
                 <div className="mobile-acc">
-                    {mobileacc.map((item) => (
+                    {accessories.map((item) => (
                         <div key={item.id}>
                             <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
                             <h2>{item.title}</h2>
@@ -60,7 +49,7 @@ function Mobile({ addToCart }) {
                 </div>
             </main>
         </>
-    )
+    );
 }
 
-export default Mobile
+export default MobileAcc;

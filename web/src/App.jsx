@@ -15,6 +15,8 @@ import Dresses from './page/Dresses'
 import Womensshoes from './page/Womensshoes'
 import Womensbags from './page/Womensbags'
 import Mobile from './page/Mobile'
+import Phone from './page/Phone'
+import MobileAcc from './page/MobileAcc'
 import Electronics from './page/Electronics'
 import B from './page/B'
 import Fragrances from './page/Fragrances'
@@ -61,6 +63,8 @@ function App() {
         <Route path="/cart" element={<Cart cart={cart} updateCartQuantity={updateCartQuantity} removeFromCart={removeFromCart} />} />
         <Route path="/Faction" element={<Faction addToCart={addToCart} />} />
         <Route path='/mobile' element={<Mobile addToCart={addToCart} />} />
+        <Route path='/phone' element={<Phone addToCart={addToCart} />} />
+        <Route path='/mobile-acc' element={<MobileAcc addToCart={addToCart} />} />
         <Route path='/Electronics' element={<Electronics addToCart={addToCart} />}></Route>
         <Route path='/b' element={<B addToCart={addToCart} />}></Route>
         <Route path='/fragrances' element={<Fragrances addToCart={addToCart} />}></Route>
