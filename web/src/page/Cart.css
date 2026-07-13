@@ -58,10 +58,7 @@
     font-weight: 800;
     letter-spacing: -0.75px;
     margin-bottom: 32px;
-    background: linear-gradient(135deg, var(--color-text-dark), var(--color-primary));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
 }
 
 /* Beautiful Empty Cart State styling */

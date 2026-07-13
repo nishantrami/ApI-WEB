@@ -34,9 +34,7 @@ header {
 .navbar h1 {
     font-size: 1.6rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #0f172a, #2563eb);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
     margin: 0;
     letter-spacing: -0.5px;
     cursor: pointer;
@@ -519,10 +517,7 @@ main {
     font-size: 1.35rem;
     font-weight: 800;
     letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #0f172a, #3b82f6);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
 }
 
 #root>header+header .navbar-links {
@@ -552,10 +547,7 @@ main {
     font-size: 1.75rem;
     font-weight: 800;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #0f172a, #2563eb);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
@@ -567,10 +559,7 @@ main {
     font-size: 1.75rem;
     font-weight: 800;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #db2777, #e11d48);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #db2777;
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
@@ -795,10 +784,7 @@ main {
     font-weight: 800;
     margin-top: 30px;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #0f172a, #2563eb);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
@@ -811,10 +797,7 @@ main {
     font-weight: 800;
     margin-top: 30px;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #0f172a, #2563eb);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
@@ -827,10 +810,7 @@ main {
     font-weight: 800;
     margin-top: 30px;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #0f172a, #2563eb);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
@@ -842,10 +822,7 @@ main {
     font-weight: 800;
     margin-top: 30px;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #db2777, #e11d48);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #db2777;
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
@@ -857,10 +834,7 @@ main {
     font-weight: 800;
     margin-top: 30px;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #db2777, #e11d48);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #db2777;
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
@@ -1269,10 +1243,7 @@ main {
     font-weight: 800;
     margin-top: 30px;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #0f172a, #2563eb);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
@@ -1285,10 +1256,7 @@ main {
     font-weight: 800;
     margin-top: 30px;
     margin-bottom: 5px;
-    background: linear-gradient(135deg, #0f172a, #2563eb);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-text-dark);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     letter-spacing: -0.5px;
