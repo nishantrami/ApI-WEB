@@ -11,7 +11,7 @@ function Home({ searchQuery, setSearchQuery, addToCart }) {
         const featchData = async () => {
             const url = searchQuery.trim()
                 ? `https://dummyjson.com/products/search?q=${searchQuery}`
-                : 'https://dummyjson.com/products?limit=100';
+                : 'https://dummyjson.com/products?limit=200';
             const response = await fetch(url);
             const data = await response.json();
             setProduct(data.products || []);
