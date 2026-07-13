@@ -1,16 +1,35 @@
-# React + Vite
+# E-Commerce Web Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the frontend client workspace of the E-Commerce application. It is built using React 19, Vite 8, and React Router DOM.
 
-Currently, two official plugins are available:
+For full project architecture, local setup, and deployment guides, please see the root [README.md](../README.md).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ Tech Stack & Dependencies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **UI Framework**: React 19 / React DOM 19
+- **Routing**: React Router DOM v6
+- **HTTP Client**: Axios (for any direct API requests)
+- **Linter**: Oxlint (configured in [.oxlintrc.json](.oxlintrc.json))
+- **Build Tool**: Vite 8 with `@vitejs/plugin-react`
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 📂 Key Source Directories
+
+- [src/assets/](src/assets): Image files and static visual assets.
+- [src/component/](src/component): Contains shared UI components like the [Header](src/component/Header.jsx) with navigation, search support, and cart indicator.
+- [src/page/](src/page): Contains the page views (Home, Cart, ProductDetails, and category-specific listings).
+- [src/App.jsx](src/App.jsx): Defines paths, routing logic, and root-level states (cart, searchQuery).
+
+---
+
+## 💻 Available Scripts
+
+These scripts should be run from this folder, or through the root npm workspace command (e.g., `npm run dev --workspace=web`):
+
+- **`npm run dev`**: Starts the local development server at `http://localhost:5173`.
+- **`npm run build`**: Compiles the React application into optimized static assets in the `dist` folder.
+- **`npm run lint`**: Runs Oxlint to inspect codebase and report any code quality warnings.
+- **`npm run preview`**: Serves the compiled `dist` folder locally for previewing.
