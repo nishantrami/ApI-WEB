@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './component/Header'
+import Footer from './component/Footer'
 import Home from './page/Home'
 import Faction from './page/Faction'
 import MenFaction from './page/MenFaction'
@@ -80,6 +81,7 @@ function App() {
         <Route path='/Womensshoes' element={<Womensshoes addToCart={addToCart} />} />
         <Route path='/Womensbags' element={<Womensbags addToCart={addToCart} />} />
       </Routes>
+      <Footer />
     </>
   )
 }
