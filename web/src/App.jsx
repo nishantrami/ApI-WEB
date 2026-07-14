@@ -4,7 +4,7 @@ import './App.css'
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Home from './page/Home'
-import Faction from './page/Faction'
+import Fashion from './page/Fashion'
 import MenFaction from './page/MenFaction'
 import Productdeatils from './page/Productdeatils'
 import Shirt from './page/Shirt'
@@ -59,9 +59,9 @@ function App() {
     <>
       <Header setSearchQuery={setSearchQuery} cart={cart} />
       <Routes>
-        <Route path="/" element={<Home searchQuery={searchQuery} setSearchQuery={setSearchQuery} addToCart={addToCart} />} />
+        <Route path="/" element={<Home searchQuery={searchQuery} addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cart={cart} updateCartQuantity={updateCartQuantity} removeFromCart={removeFromCart} />} />
-        <Route path="/Faction" element={<Faction addToCart={addToCart} />} />
+        <Route path="/Fashion" element={<Fashion addToCart={addToCart} />} />
         <Route path='/mobile' element={<Mobile addToCart={addToCart} />} />
         <Route path='/phone' element={<Phone addToCart={addToCart} />} />
         <Route path='/mobile-acc' element={<MobileAcc addToCart={addToCart} />} />

@@ -25,7 +25,7 @@ function Footer() {
                     <h3>Shop</h3>
                     <ul>
                         <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
-                        <li><Link to="/Faction" onClick={handleLinkClick}>Fashion</Link></li>
+                        <li><Link to="/Fashion" onClick={handleLinkClick}>Fashion</Link></li>
                         <li><Link to="/Mobile" onClick={handleLinkClick}>Mobile</Link></li>
                         <li><Link to="/Electronics" onClick={handleLinkClick}>Electronics</Link></li>
                         <li><Link to="/b" onClick={handleLinkClick}>Beauty</Link></li>

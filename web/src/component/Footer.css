@@ -1,12 +1,12 @@
 /* Basic Footer Styling */
+
 footer {
   grid-column: 1 / -1;
   width: 100%;
-  margin-top: 60px;
   background-color: #1e293b; /* Slate 800 */
   color: #f1f5f9; /* Slate 100 */
   font-family: var(--font-primary);
-  padding: 40px 20px 20px 20px;
+  padding: 40px 20px 20px ;
 }
 
 .footer-container {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 
 
-function Home({ searchQuery, setSearchQuery, addToCart }) {
+function Home({ searchQuery, addToCart }) {
     const [product, setProduct] = useState([]);
 
 

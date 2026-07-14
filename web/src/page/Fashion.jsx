@@ -40,19 +40,19 @@ function Faction({ addToCart }) {
     return (
         <>
             <header>
-                <h2>Faction</h2>
+                <h2>Fashion</h2>
                 <div className="category-links">
                     <ul>
                         <li>
                             <Link to="/MensFaction">
                                 <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&q=80&w=120" alt="Mens Faction" />
-                                <span>Mens-Faction</span>
+                                <span>Mens-Fashion</span>
                             </Link>
                         </li>
                         <li>
                             <Link to="/WommensFaction">
                                 <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=120" alt="Wommens Faction" />
-                                <span>Wommens-Faction</span>
+                                <span>Wommens-Fashion</span>
                             </Link>
                         </li>
                     </ul>

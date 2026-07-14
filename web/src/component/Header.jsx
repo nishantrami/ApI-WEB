@@ -50,11 +50,11 @@ function Header({ setSearchQuery, cart = [] }) {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/Faction">
+                            <Link to="/Fashion">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="nav-icon">
                                     <path d="M20.38 3.46 16 7.83V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v3.83L3.62 3.46a2 2 0 0 0-2.83 0 2 2 0 0 0 0 2.83l3.47 3.47a2 2 0 0 0 .53.37L7 11.23V20a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8.77l2.26-1.1a2 2 0 0 0 .53-.37l3.47-3.47a2 2 0 0 0 0-2.83 2 2 0 0 0-2.83 0z" />
                                 </svg>
-                                Faction
+                                Fashion
                             </Link>
                         </li>
                         <li>
