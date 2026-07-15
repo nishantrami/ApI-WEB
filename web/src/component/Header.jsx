@@ -88,7 +88,7 @@ function Header({ setSearchQuery, cart = [] }) {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="nav-icon">
                                     <path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V12m4.5 0a4.5 4.5 0 1 1-4.5 4.5M16.5 12H12m-4.5 0A4.5 4.5 0 1 0 12 16.5M7.5 12H12m0 4.5V12" />
                                 </svg>
-                                fragrances
+                                Fragrances
                             </Link>
                         </li>
                         <li>
@@ -100,7 +100,7 @@ function Header({ setSearchQuery, cart = [] }) {
                                     <path d="M6 18v2" />
                                     <path d="M18 18v2" />
                                 </svg>
-                                furniture
+                                Furniture
                             </Link>
                         </li>
                         <li>

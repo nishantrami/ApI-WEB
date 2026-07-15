@@ -565,6 +565,19 @@ main {
     letter-spacing: -0.5px;
 }
 
+.wommens-faction.dresses::before {
+    content: "Dresses";
+}
+
+.wommens-faction.shoes::before {
+    content: "Shoes";
+    color: #db2777;
+}
+
+.wommens-faction.bags::before {
+    content: "Bags";
+}
+
 /* Premium Card Design for Factions */
 .mens-faction>div:not(.shoes):not(.watches),
 .shirt>div,

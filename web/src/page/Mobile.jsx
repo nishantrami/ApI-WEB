@@ -1,16 +1,29 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SkeletonCard from "../component/SkeletonCard";
 
 function Mobile({ addToCart }) {
     const [mobile, setMobile] = useState([]);
     const [mobileacc, setMobileAcc] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        fetch('https://dummyjson.com/products/category/smartphones')
-            .then(res => res.json())
-            .then(data => setMobile(data.products));
-        fetch('https://dummyjson.com/products/category/mobile-accessories')
-            .then(res => res.json())
-            .then(data => setMobileAcc(data.products));
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const [resMobile, resAcc] = await Promise.all([
+                    fetch('https://dummyjson.com/products/category/smartphones').then(r => r.json()),
+                    fetch('https://dummyjson.com/products/category/mobile-accessories').then(r => r.json())
+                ]);
+                setMobile(resMobile.products || []);
+                setMobileAcc(resAcc.products || []);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
     }, []);
     return (
         <>
@@ -35,32 +48,44 @@ function Mobile({ addToCart }) {
             </header>
             <main>
                 <div className="phone">
-                    {mobile.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))
+                    ) : (
+                        mobile.map((item) => (
+                            <div key={item.id}>
+                                <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <p>Rating: {item.rating} </p>
+                                <p>Price: ${item.price}</p>
+                                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            </div>
+                        ))
+                    )}
                 </div>
                 <div className="mobile-acc">
-                    {mobileacc.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))
+                    ) : (
+                        mobileacc.map((item) => (
+                            <div key={item.id}>
+                                <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <p>Rating: {item.rating} </p>
+                                <p>Price: ${item.price}</p>
+                                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            </div>
+                        ))
+                    )}
                 </div>
             </main>
         </>
     )
 }
 
-export default Mobile
+export default Mobile;

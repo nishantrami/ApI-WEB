@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SkeletonCard from "../component/SkeletonCard";
 
 function Phone({ addToCart }) {
     const [phone, setPhone] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://dummyjson.com/products/category/smartphones");
-            const data = await response.json();
-            setPhone(data.products || []);
+            setLoading(true);
+            try {
+                const response = await fetch("https://dummyjson.com/products/category/smartphones");
+                const data = await response.json();
+                setPhone(data.products || []);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
         };
         fetchData();
     }, []);
@@ -16,11 +25,11 @@ function Phone({ addToCart }) {
     return (
         <>
             <header>
-                <h2>Mobile & Accessories</h2>
+                <h2>Mobile</h2>
                 <div className="category-links">
                     <ul>
                         <li>
-                            <Link to="/phone">
+                            <Link to="/Phone">
                                 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=120" alt="Phone" />
                                 <span>Phone</span>
                             </Link>
@@ -36,16 +45,22 @@ function Phone({ addToCart }) {
             </header>
             <main>
                 <div className="phone">
-                    {phone.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))
+                    ) : (
+                        phone.map((item) => (
+                            <div key={item.id}>
+                                <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <p>Rating: {item.rating} </p>
+                                <p>Price: ${item.price}</p>
+                                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            </div>
+                        ))
+                    )}
                 </div>
             </main>
         </>

@@ -1,25 +1,31 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import SkeletonCard from "../component/SkeletonCard";
 
 
 function WommensFaction({ addToCart }) {
     const [dresses, setDresses] = useState([]);
     const [shoes, setShoes] = useState([]);
     const [bags, setBags] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://dummyjson.com/products/category/womens-dresses");
-            const data = await response.json();
-            setDresses(data.products || []);
-
-            const response2 = await fetch("https://dummyjson.com/products/category/womens-shoes");
-            const data2 = await response2.json();
-            setShoes(data2.products || []);
-
-            const response3 = await fetch("https://dummyjson.com/products/category/womens-bags");
-            const data3 = await response3.json();
-            setBags(data3.products || []);
+            setLoading(true);
+            try {
+                const [resDresses, resShoes, resBags] = await Promise.all([
+                    fetch("https://dummyjson.com/products/category/womens-dresses").then(r => r.json()),
+                    fetch("https://dummyjson.com/products/category/womens-shoes").then(r => r.json()),
+                    fetch("https://dummyjson.com/products/category/womens-bags").then(r => r.json())
+                ]);
+                setDresses(resDresses.products || []);
+                setShoes(resShoes.products || []);
+                setBags(resBags.products || []);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
         };
         fetchData();
     }, []);
@@ -27,7 +33,7 @@ function WommensFaction({ addToCart }) {
     return (
         <>
             <header>
-                <h2> Womens-Faction</h2>
+                <h2> Womens-Fashion</h2>
                 <div className="category-links">
                     <ul>
                         <li>
@@ -53,40 +59,58 @@ function WommensFaction({ addToCart }) {
             </header>
             <main>
                 <div className="wommens-faction">
-                    {dresses.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))
+                    ) : (
+                        dresses.map((item) => (
+                            <div key={item.id}>
+                                <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <p>Rating: {item.rating} </p>
+                                <p>Price: ${item.price}</p>
+                                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            </div>
+                        ))
+                    )}
                 </div>
                 <div className="womens-shoes">
-                    {shoes.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))
+                    ) : (
+                        shoes.map((item) => (
+                            <div key={item.id}>
+                                <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <p>Rating: {item.rating} </p>
+                                <p>Price: ${item.price}</p>
+                                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            </div>
+                        ))
+                    )}
                 </div>
                 <div className="womens-bags">
-                    {bags.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))
+                    ) : (
+                        bags.map((item) => (
+                            <div key={item.id}>
+                                <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <p>Rating: {item.rating} </p>
+                                <p>Price: ${item.price}</p>
+                                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            </div>
+                        ))
+                    )}
                 </div>
             </main>
         </>

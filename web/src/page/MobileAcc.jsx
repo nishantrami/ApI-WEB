@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SkeletonCard from "../component/SkeletonCard";
 
 function MobileAcc({ addToCart }) {
     const [accessories, setAccessories] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://dummyjson.com/products/category/mobile-accessories");
-            const data = await response.json();
-            setAccessories(data.products || []);
+            setLoading(true);
+            try {
+                const response = await fetch("https://dummyjson.com/products/category/mobile-accessories");
+                const data = await response.json();
+                setAccessories(data.products || []);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
         };
         fetchData();
     }, []);
@@ -16,7 +25,7 @@ function MobileAcc({ addToCart }) {
     return (
         <>
             <header>
-                <h2>Mobile & Accessories</h2>
+                <h2>Mobile Accessories</h2>
                 <div className="category-links">
                     <ul>
                         <li>
@@ -36,16 +45,22 @@ function MobileAcc({ addToCart }) {
             </header>
             <main>
                 <div className="mobile-acc">
-                    {accessories.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))
+                    ) : (
+                        accessories.map((item) => (
+                            <div key={item.id}>
+                                <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <p>Rating: {item.rating} </p>
+                                <p>Price: ${item.price}</p>
+                                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            </div>
+                        ))
+                    )}
                 </div>
             </main>
         </>

@@ -1,28 +1,38 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import SkeletonCard from "../component/SkeletonCard";
 
 function Home({ searchQuery, addToCart }) {
     const [product, setProduct] = useState([]);
-
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-
         const featchData = async () => {
-            const url = searchQuery.trim()
-                ? `https://dummyjson.com/products/search?q=${searchQuery}`
-                : 'https://dummyjson.com/products?limit=200';
-            const response = await fetch(url);
-            const data = await response.json();
-            setProduct(data.products || []);
-        }
+            setLoading(true);
+            try {
+                const url = searchQuery.trim()
+                    ? `https://dummyjson.com/products/search?q=${searchQuery}`
+                    : 'https://dummyjson.com/products?limit=200';
+                const response = await fetch(url);
+                const data = await response.json();
+                setProduct(data.products || []);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
         featchData();
-    }, [searchQuery])
+    }, [searchQuery]);
 
     return (
         <>
-            {product.length === 0 ? (
-                <div style={{ textAlign: 'center', padding: '80px 20px', color: '#64748b' }}>
+            {loading ? (
+                Array.from({ length: 8 }).map((_, index) => (
+                    <SkeletonCard key={index} />
+                ))
+            ) : product.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '80px 20px', color: '#64748b', gridColumn: '1 / -1' }}>
                     <h2 style={{ marginBottom: '10px' }}>No products found</h2>
                     <p>We couldn't find any products matching "{searchQuery}". Try a different search term.</p>
                 </div>
@@ -39,7 +49,7 @@ function Home({ searchQuery, addToCart }) {
                 ))
             )}
         </>
-    )
+    );
 }
 
-export default Home
+export default Home;

@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SkeletonCard from "../component/SkeletonCard";
 
 
 function Womensbags({ addToCart }) {
     const [bags, setBags] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://dummyjson.com/products/category/womens-bags");
-            const data = await response.json();
-            setBags(data.products || []);
+            setLoading(true);
+            try {
+                const response = await fetch("https://dummyjson.com/products/category/womens-bags");
+                const data = await response.json();
+                setBags(data.products || []);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
         };
         fetchData();
     }, []);
@@ -17,7 +26,7 @@ function Womensbags({ addToCart }) {
     return (
         <>
             <header>
-                <h2> Womens-Faction</h2>
+                <h2> Womens-Fashion</h2>
                 <div className="category-links">
                     <ul>
                         <li>
@@ -42,17 +51,23 @@ function Womensbags({ addToCart }) {
                 </div>
             </header>
             <main>
-                <div className="wommens-faction">
-                    {bags.map((item) => (
-                        <div key={item.id}>
-                            <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>Rating: {item.rating} </p>
-                            <p>Price: ${item.price}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
-                        </div>
-                    ))}
+                <div className="wommens-faction bags">
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <SkeletonCard key={index} />
+                        ))
+                    ) : (
+                        bags.map((item) => (
+                            <div key={item.id}>
+                                <Link to={`/products/${item.id}`}><img src={item.thumbnail} alt={item.title} /></Link>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <p>Rating: {item.rating} </p>
+                                <p>Price: ${item.price}</p>
+                                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            </div>
+                        ))
+                    )}
                 </div>
             </main>
         </>
