@@ -402,19 +402,55 @@ header {
     border-color: rgba(37, 99, 235, 0.2);
 }
 
-/* Image styling */
-#root>div>img {
-    max-width: 100%;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 24px;
-    transition: transform var(--transition-slow);
-    align-self: center;
+/* Image container and centering styling */
+#root>div>a,
+.mens-faction>div>a,
+.shirt>div>a,
+.shoes>div>a,
+.watches>div>a,
+.wommens-faction>div>a,
+.womens-shoes>div>a,
+.womens-bags>div>a,
+.phone>div>a,
+.mobile-acc>div>a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 200px;
+    margin-bottom: 24px;
     background-color: #ffffff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    align-self: center;
 }
 
-#root>div:hover>img {
+#root>div img,
+.mens-faction>div img,
+.shirt>div img,
+.shoes>div img,
+.watches>div img,
+.wommens-faction>div img,
+.womens-shoes>div img,
+.womens-bags>div img,
+.phone>div img,
+.mobile-acc>div img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform var(--transition-slow);
+}
+
+#root>div:hover img,
+.mens-faction>div:hover img,
+.shirt>div:hover img,
+.shoes>div:hover img,
+.watches>div:hover img,
+.wommens-faction>div:hover img,
+.womens-shoes>div:hover img,
+.womens-bags>div:hover img,
+.phone>div:hover img,
+.mobile-acc>div:hover img {
     transform: scale(1.05);
 }
 
@@ -616,35 +652,7 @@ main {
     border-color: rgba(219, 39, 119, 0.2);
 }
 
-/* Product image styling */
-.mens-faction>div:not(.shoes):not(.watches)>img,
-.shirt>div>img,
-.shoes>div>img,
-.watches>div>img,
-.wommens-faction>div:not(.womens-shoes):not(.womens-bags)>img,
-.womens-shoes>div>img,
-.womens-bags>div>img {
-    max-width: 100%;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 24px;
-    transition: transform var(--transition-slow);
-    align-self: center;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: var(--radius-md);
-}
-
-.mens-faction>div:not(.shoes):not(.watches):hover>img,
-.shirt>div:hover>img,
-.shoes>div:hover>img,
-.watches>div:hover>img,
-.wommens-faction>div:not(.womens-shoes):not(.womens-bags):hover>img,
-.womens-shoes>div:hover>img,
-.womens-bags>div:hover>img {
-    transform: scale(1.04);
-}
-
+/* Product image styling handled by unified selectors */
 /* Title typography */
 .mens-faction>div:not(.shoes):not(.watches)>h2,
 .shirt>div>h2,
@@ -1018,14 +1026,14 @@ main {
         padding: 16px;
     }
 
-    #root>div>img,
-    .mens-faction>div:not(.shoes):not(.watches)>img,
-    .shirt>div>img,
-    .shoes>div>img,
-    .watches>div>img,
-    .wommens-faction>div:not(.womens-shoes):not(.womens-bags)>img,
-    .womens-shoes>div>img,
-    .womens-bags>div>img {
+    #root>div>a,
+    .mens-faction>div>a,
+    .shirt>div>a,
+    .shoes>div>a,
+    .watches>div>a,
+    .wommens-faction>div>a,
+    .womens-shoes>div>a,
+    .womens-bags>div>a {
         height: 160px;
         margin-bottom: 16px;
     }
@@ -1148,25 +1156,7 @@ main {
     border-color: rgba(37, 99, 235, 0.2);
 }
 
-/* Product image styling */
-.phone>div img,
-.mobile-acc>div img {
-    max-width: 100%;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 24px;
-    transition: transform var(--transition-slow);
-    align-self: center;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: var(--radius-md);
-}
-
-.phone>div:hover img,
-.mobile-acc>div:hover img {
-    transform: scale(1.04);
-}
-
+/* Phone & Mobile Acc image styling handled by unified selectors */
 /* Title typography */
 .phone>div h2,
 .mobile-acc>div h2 {
@@ -1307,8 +1297,8 @@ main {
         padding: 16px;
     }
 
-    .phone>div img,
-    .mobile-acc>div img {
+    .phone>div>a,
+    .mobile-acc>div>a {
         height: 160px;
         margin-bottom: 16px;
     }
